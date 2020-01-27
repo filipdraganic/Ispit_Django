@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+{%block content%}
+{% load static %}
+
+
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1 >Analiza</h1>
+    </div><py></py>
+</section>
+
+<style>
+    .jumbotron{
+
+        max-height: 10px;
+        {#position:relative;#}
+
+        margin-top: -50px;
+    }
+    .featured{
+        margin-left: 30px;
+
+    }
+
+    #slika{
+        padding-top: 10px;
+        max-height: 320px;
+
+
+
+    }
+    #okoSlikeDiv{
+                height: 320px;
+
+        text-align: center;
+
+
+
+    }
+    #inner{
+
+    }
+    .card-img-top{
+        max-height: 300px;
+        margin: 0 auto;
+
+
+    }
+
+    .card{
+        background: lightblue;
+        box-shadow: 1px 1px 1px 1px #cccccc;
+
+
+        height: 480px;
+        {#padding: 10px;#}
+        margin: 5px 10px 5px 5px;
+
+    }
+    .card-text{
+
+        min-height: 50px;
+    }
+    .card-title{
+        min-height: 60px;
+    }
+
+</style>
+
+
+    <div class="row">
+        <div class="col-2">
+
+        </div>
+    <div class="col-8">
+
+        <div class="container">
+
+            <div class="row">
+
+                {% for instance in obj_list %}
+
+                    <div class="col-4 ">
+                        <p class="card-text">{{instance.id}}</p>
+                        <p class="card-text">{{instance.ime}}</p>
+                        <p class="card-text">{{instance.adresa}}</p>
+                        <p class="card-text">{{instance.email}}</p>
+                        <p class="card-text">{{instance.grad}}</p>
+                        <p class="card-text">{{instance.password}}</p>
+                        <p class="card-text">{{instance.username}}</p>
+
+                    </div>
+                        <span></span>
+
+
+                {% endfor %}
+
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+{% endblock %}
