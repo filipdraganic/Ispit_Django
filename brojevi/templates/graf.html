@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{%block content%}
+{% load static %}
+    <div class="container">
+        <form action="/graf/" method="POST"> {% csrf_token %}
+
+            {{ form.as_p }}
+            <button type="submit">PLOT</button>
+
+            {% if slika != None %}
+                <p>Slikaaaaaaaaaaaaaaaaaaa</p>
+                {{ slika|safe }}
+
+            {% endif %}
+
+        </form>
+
+
+    <canvas id="myChart" width="400" height="400"></canvas>
+        <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        console.log()
+        var scatterChart = new Chart(ctx, {
+            type: 'scatter',
+            data: {
+                datasets: [{
+                    label: 'Scatter Dataset',
+                    data: {{ slika|safe }},
+                    borderColor: 'red',
+                    backgroundColor : 'rgba(255,0,0,0.5)'
+
+                }]
+            },
+            options: {
+                scales: {
+                    xAxes: [{
+                        type: 'linear',
+                        position: 'bottom',
+                        scaleLabel: {
+                          display: true,
+                          labelString: 'X axis label'
+                        }
+                    }]
+                }
+            }
+        });
+        </script>
+
+    </div>
+
+{% endblock %}

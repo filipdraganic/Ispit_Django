@@ -40,7 +40,7 @@ INSTALLED_APPS = [
 
     'oglas',
     'korisnik',
-
+    'brojevi'
 ]
 
 MIDDLEWARE = [
