@@ -14,6 +14,7 @@ class Oglas(models.Model):
     preostaloVreme = models.IntegerField(null=True, blank=False, default=60000)
     opis = models.CharField(null=True, blank=False, default="Klasican opis", max_length=254)
 
+
 class Licitacija(models.Model):
     vremeLicitacije = models.DateTimeField(auto_now_add=True, null=True, blank=False)
     cena = models.IntegerField(default=None, blank=False)
