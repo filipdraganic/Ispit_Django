@@ -4,16 +4,18 @@ from django.db import models
 from django import forms
 
 IZBORI = (
-    ('datumPostavljanja', 'Datum postavljanja'),
-    ('cena', 'cena'),
+    ('cena', 'Cena oglasa'),
     ('brojPregleda', 'Broj pregleda'),
-    ('brojLicitacija', 'Broj licitacija')
+    ('brojLicitacija', 'Broj licitacija po oglasu'),
+    ('brojLicitacijaKorisnik', 'Broj licitacija po korisniku'),
+    ('brojOglasaKorisnik', 'Broj oglasa po korisniku')
+
 )
 
 
 class Brojevi(models.Model):
-    prvoPolje = models.CharField(blank=False, null=True, choices=IZBORI, default='brojPregleda', max_length=20)
-    drugoPolje = models.CharField(blank=False, null=True, choices=IZBORI, default='cena', max_length=20)
+    prvoPolje = models.CharField(blank=False, null=True, choices=IZBORI, default='brojPregleda', max_length=22)
+    drugoPolje = models.CharField(blank=False, null=True, choices=IZBORI, default='cena', max_length=22)
 
 
 class BrojeviForma(forms.ModelForm):

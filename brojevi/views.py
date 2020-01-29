@@ -56,11 +56,20 @@ def brojevi_view(request):
             print(form.cleaned_data)
             prvoPolje = form.cleaned_data.get("prvoPolje")
             queryset1 = []
-            svi = list(Oglas.objects.all())
             imenaOglasa = []
-            for oglas in svi:
-                queryset1.append(oglas.getZeljenoPolje(prvoPolje))
-                imenaOglasa.append(oglas.ime)
+            if "Korisnik" in prvoPolje:
+                print("Ima")
+                svi = list(Korisnik.objects.all())
+                for korisnik in svi:
+                    queryset1.append(korisnik.getZeljenoPolje(prvoPolje))
+                    imenaOglasa.append(korisnik.ime)
+
+            else:
+                svi = list(Oglas.objects.all())
+                print("nema")
+                for oglas in svi:
+                    queryset1.append(oglas.getZeljenoPolje(prvoPolje))
+                    imenaOglasa.append(oglas.ime)
             print(queryset1)
             slika = "nesto"
             print(imenaOglasa)
