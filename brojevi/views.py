@@ -97,11 +97,9 @@ def filter_view(request, slug=None):
     lista = []
 
     if request.method == "POST":
-        print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
 
         form = FilterForma(request.POST)
         if form.is_valid():
-            print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
             print(form.cleaned_data)
             idOglasa = form.cleaned_data['id']
             ime = form.cleaned_data['ime']
