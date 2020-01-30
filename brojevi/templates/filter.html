@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{%block content%}
+{% load static %}
+{% load crispy_forms_tags %}
+    <style>
+        #drugiDiv{
+            margin-top: 20px;
+        }
+    </style>
+    <div id="neki" class="container">
+        <a class="col-3 btn dugmelevo" href="korisnici">Korisnici</a>
+        <a class="col-3 btn dugme" href="oglasi">Oglasi</a>
+        <a class="col-3 btn dugme" href="oglasiDetaljno">Oglasi detaljnije</a>
+
+
+    </div>
+
+    {% if render is True %}
+        {% if slug == 'korisnici' or slug == 'oglasi'%}
+        <div class="container">
+            <h2>Samofiltrirajuca lista</h2>
+            <p>Unesite nesto i magijom ce se isfiltrirati sve:</p>
+            <input class="form-control" id="myInput" type="text" placeholder="Search..">
+            <br>
+            <ul class="list-group row" id="myList">
+                {% for objekat in lista %}
+                    <textarea readonly rows="8" cols="25" class="list-group-item col-4" >{{ objekat }}</textarea>
+                    <br><br><br><br>
+
+                {% endfor %}
+
+
+            </ul>
+        </div>
+
+        <script>
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+                $("#myList textarea").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+        </script>
+
+        {% endif %}
+
+        {% if slug == 'oglasiDetaljno' %}
+            <div class="container" id="drugiDiv">
+                <form method="POST" action="/filter/oglasiDetaljno">
+                    {% csrf_token %}
+                    {{ form | crispy }}
+                    <br>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+
+                <ul class="list-group row" id="myList">
+                    {% for objekat in lista %}
+                        <textarea readonly rows="8" cols="25" class="list-group-item col-4" >{{ objekat }}</textarea>
+                        <br><br><br><br>
+
+                    {% endfor %}
+                </ul>
+
+
+            </div>
+
+        {% endif %}
+
+    {% endif %}
+
+
+
+    <style>
+        #neki{
+            text-align: center;
+            margin-top: 50px;
+        }
+        #myList{
+               display: flex;
+                flex-flow: row wrap;
+        }
+    </style>
+
+{% endblock %}

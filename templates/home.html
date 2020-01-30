@@ -5,7 +5,7 @@
 
 
 <section class="jumbotron text-center">
-    <div class="container row text-center">
+    <div class="container row ">
         <a class="col-3 btn dugmelevo" href="/graf">GRAF</a>
         <a class="col-3 btn dugme" href="/filter">SEARCH/FILTER</a>
         <a class="col-3 btn dugmedesno" href="/brojevi">BROJEVI</a>
@@ -41,43 +41,22 @@
             align-items: center;
             justify-content: center;
         }
+        #neki{
+            text-align: center;
+        }
 
 
 </style>
 
 
-    <div class="row">
-        <div class="col-2">
-
-        </div>
-    <div class="col-8">
-
-        <div class="container">
-
-            <div class="row">
-
-                {% for instance in obj_list %}
-
-                    <div class="col-4 ">
-                        <p class="card-text">{{instance.id}}</p>
-                        <p class="card-text">{{instance.ime}}</p>
-                        <p class="card-text">{{instance.adresa}}</p>
-                        <p class="card-text">{{instance.email}}</p>
-                        <p class="card-text">{{instance.grad}}</p>
-                        <p class="card-text">{{instance.password}}</p>
-                        <p class="card-text">{{instance.username}}</p>
-
-                    </div>
-                        <span></span>
 
 
-                {% endfor %}
+            <div class="container" id="neki">
+
+               <h1>PRITISNUTI <br><br> NA ZELJENU <br><br>OPCIJU <br><br>PREDSTAVLJANJA<br><br> FILTRIRANJA</h1>
 
 
             </div>
 
-        </div>
 
-    </div>
-</div>
 {% endblock %}

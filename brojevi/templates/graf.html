@@ -2,17 +2,22 @@
 
 {%block content%}
 {% load static %}
-    <div class="container">
+{% load crispy_forms_tags %}
+    <style>
+        #div{
+            text-align: center;
+            margin-top: 20px;
+            max-height: 20px;
+            max-width: 500px;
+        }
+    </style>
+    <div class="container" id="div">
         <form action="/graf/" method="POST"> {% csrf_token %}
 
-            {{ form.as_p }}
-            <button type="submit">PLOT</button>
+            {{ form |crispy}}
+            <button type="submit" class="btn">PLOT</button>
 
-            {% if slika != None %}
-                <p>Slikaaaaaaaaaaaaaaaaaaa</p>
-                {{ slika|safe }}
 
-            {% endif %}
 
         </form>
 
@@ -23,9 +28,12 @@
         console.log()
         var scatterChart = new Chart(ctx, {
             type: 'scatter',
+                            labels: {{ listaImena|safe }},
+
             data: {
+
                 datasets: [{
-                    label: 'Scatter Dataset',
+                    label: '{{ prvoPolje }} / {{ drugopolje }}',
                     data: {{ slika|safe }},
                     borderColor: 'red',
                     backgroundColor : 'rgba(255,0,0,0.5)'
@@ -39,7 +47,16 @@
                         position: 'bottom',
                         scaleLabel: {
                           display: true,
-                          labelString: 'X axis label'
+                          labelString: '{{ drugopolje }}'
+                        }
+                    }],
+
+                    yAxes: [{
+                        type: 'linear',
+                        position: 'top',
+                        scaleLabel: {
+                          display: true,
+                          labelString: '{{ prvoPolje }}'
                         }
                     }]
                 }

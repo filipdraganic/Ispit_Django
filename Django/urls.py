@@ -16,12 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from korisnik.views import korisnik_view
-from brojevi.views import brojevi_view, graf_view
+from brojevi.views import brojevi_view, graf_view, filter_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', korisnik_view),
     path('brojevi/', brojevi_view),
-    path('graf/', graf_view)
-
+    path('graf/', graf_view),
+    path('filter/', filter_view),
+    path('filter/<slug:slug>', filter_view)
 ]
